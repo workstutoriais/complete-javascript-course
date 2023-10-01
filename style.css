@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 50vh;
+  display: center;
+  font-family: Arial;
+  align-items: left;
+  font-size: 20px;
+  background: linear-gradient(to top left, #28b487, #7dd56f);
+  text-align: center;
+  padding: 50px;
+}
+h1 {
+  font-family: Arial;
+  font-size: 40px;
+  line-height: 1.3;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 25px;
+
+  color: white;
+}
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+p {
+  margin-bottom: 20px;
+}
+.first {
+  color: red;
+}
+
+#your-name {
+  background-color: rgb(255, 220, 105);
+  border: 5px solid #444;
+  padding: 25px;
+  width: 1800px;
+  align-content: center;
+  margin-top: 30px;
+}
+
+input,
+button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+a {
+  background-color: yellowgreen;
+}
+
+#linkedin-img-profile {
+  width: 200px;
+}
+#your-name h2 {
+  color: olivedrab;
+}
