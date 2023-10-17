@@ -116,7 +116,8 @@ matilda.calcAge = jonas.calcAge;
 matilda.calcAge();
 
 const f = jonas.calcAge;
-//f();*/
+//f();
+
 let age = 30;
 let oldAge = age;
 age = 31;
@@ -131,3 +132,43 @@ const friend = me;
 friend.age = 27;
 console.log('Friend: ', friend);
 console.log('Me', me);
+
+*/
+
+//Primiteve Type
+let lastName = 'Carl';
+let oldLastName = lastName;
+
+lastName = 'Gabriel';
+console.log(lastName, oldLastName);
+
+//reference type
+const gabriel = {
+  firstName: 'Teixeira',
+  lastName: 'Almeida',
+  age: 37,
+};
+
+const marriedGabriel = gabriel;
+marriedGabriel.lastName = 'Carleu';
+console.log('Before Marriage: ', gabriel);
+console.log('After Marriage: ', marriedGabriel);
+
+//Copying objects
+
+const gabriel2 = {
+  firstName: 'Teixeira',
+  lastName: 'Almeida',
+  age: 37,
+  family: ['Valod', 'Gena'],
+};
+
+const gabrielCopy = Object.assign({}, gabriel2);
+gabrielCopy.lastName = 'Solrac';
+
+console.log(' gabriel2 Before Marriage: ', gabriel2);
+console.log(' gabrielCopy After Marriage: ', gabrielCopy);
+gabrielCopy.family.push('Klark');
+gabrielCopy.family.push('Natalia');
+
+console.log(' gabrielCopy After Marriage: ', gabrielCopy);
