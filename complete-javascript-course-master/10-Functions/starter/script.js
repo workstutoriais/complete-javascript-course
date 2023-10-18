@@ -94,7 +94,7 @@ greet('Hello')('Gaberiel');
 ///Challenge
 const greetArr = greeting => name => console.log(`${greeting} ${name}`);
 
-greetArr('Carla')('Almeida999');*/
+greetArr('Carla')('Almeida999'); 
 
 const lufthansa = {
   airline: 'Lufthansa',
@@ -111,7 +111,7 @@ const lufthansa = {
 lufthansa.book(233, 'John Smith');
 
 const eurowings = {
-  name: 'eurowings',
+  airline: 'eurowings',
   iataCode: 'LH9U',
   bookings: [],
 };
@@ -131,4 +131,131 @@ console.log(lufthansa);
 const bookEW = book.bind(eurowings);
 const bookLH = book.bind(lufthansa);
 
-bookEW(234, 'Marjorie Eto');
+bookEW(234, 'Marjorie Eto'); 
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'SWG',
+  bookings: [],
+};
+ 
+book.call(swiss, 345, 'Mary Cooper');
+
+const bookEW34 = book.bind(eurowings, 43);
+bookEW34('Teixeira Almeida')
+bookEW34('Gabriel trehvoer')
+
+
+
+// With Event Listerners
+
+lufthansa.planes =300;
+
+lufthansa.buyPlane = function(){
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+//lufthansa.buyPlane();
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+
+//partial Application
+
+const addTax = (rate, value ) => value + value * rate;
+console.log(0.1, 200);
+
+const addVAT = addTax.bind(null, 0.23);
+console.log(addVAT(233));
+console.log(addVAT(100));
+
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTaxRate(0.23);
+
+console.log(addVAT2(160));
+console.log(addVAT2(23)); 
+
+/// Coding challenge 1
+
+const poll = {
+  question: 'What is your favorite programming language?',
+  options: ['0: JavaScript', '1; Python', '2: Rust', '3: C++'],
+  //This Generates [0,0,0,0] 
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    // Get answer 
+    const answer = Number(
+      prompt(
+      `${this.question}\n${this.options.join('\n')}
+      \n(Write option Number)`
+      )
+    );
+    console.log(this.answer);
+    //Registrer answer
+    typeof answer === 'number' &&
+      answer < this.answers.length && 
+      this.answers[answer]++;
+    
+    this.displayResults();
+    this.displayResults('string');
+  },
+  displayResults(type = 'array') {
+    if(type === 'array'){
+      console.log(this.answer);
+    }else if(type === 'string'){
+      //Poll results are 13, 14, 2, 4, 1
+      console.log(`Poll result are ${this.answers.join(',')}`);
+    }
+  
+  }
+
+};
+
+
+//poll.registerNewAnswer()
+
+document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll)); 
+
+
+// Immediately Invoked Function Expressionts (LIFE)
+
+const runOnce = function () {
+  console.log('This will never run again');
+};
+
+
+// This function will be executed only once, automatically
+(function () {
+  console.log('This will never Run again');
+  const isPrivate = 23;
+}) ();
+
+//console.log(isPrivate)
+
+(() => console.log('This will also never run again'))();
+
+{ 
+  const isPrivate = 23;
+  var notPrivate = 46;
+}
+
+console.log(notPrivate)*/
+
+/// 137- Closures
+
+const secureBooking = function(){
+  let passengerCount =0;
+
+  return function(){
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+
+  }
+}
+const booker = secureBooking
