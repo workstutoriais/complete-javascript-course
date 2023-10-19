@@ -71,11 +71,11 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-
+/* 
 let arr = ['a', 'b', 'c', 'd', 'e'];
 console.log(arr.slice(2))
 
@@ -90,3 +90,48 @@ console.log(arr.slice) // remove all the elements of the Array
 //Splice
 console.log(arr.splice(2))
 console.log(arr)
+
+
+// to know more about Array documentation go to mdn documentaiton (developer.mozzila.org)
+
+//reverse
+
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j','i','g','f'];
+
+console.log(arr2.reverse())
+console.log(arr2)
+
+//CONCAT
+const letters = arr.concat(arr2)
+console.log(letters)
+*/
+
+const arr = [23, 11, 64]
+console.log(arr[0])
+console.log(arr.at(0))
+
+// Getting last array element
+
+console.log(arr[arr.length-1])
+//Slice get the elements from the Array from a specific position
+console.log(arr.slice(-1)[0])
+console.log(arr.at(-1))
+console.log('Carlos'.at(1))
+
+
+// ForEach Methods
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const movement of movements) {
+  if(movement > 0) {
+    console.log(`you Deposited ${movement}`)
+  } else {
+    console.log(`you withdraw the amount ${movement}`)
+  }
+}
+
+movements.forEach(function(movement)){
+  
+}
