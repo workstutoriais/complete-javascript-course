@@ -65,7 +65,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
 
-  const movs = sort ? movements.slice().sort((a,b) => a -b) : movements;
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
@@ -155,16 +155,20 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 
-btnClose.addEventListener('click', function(e){
+btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   console.log('Delete');
-  if(inputCloseUsername.value === currentAccount.username &&(Number(inputClosePin.value) === currentAccount.pin)
-  ){
-    const index = accounts.findIndex(acc => user.username === currentAccount.username);
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => user.username === currentAccount.username
+    );
     console.log(index);
     //.indexOf(23)<
   }
-})
+});
 
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
@@ -186,22 +190,25 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
-btnLoan.addEventListener('click', function(e){
+btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Number(inputLoanAmount.value);
-  if(amount >= 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)){
+  if (
+    amount >= 0 &&
+    currentAccount.movements.some(mov => mov >= amount * 0.1)
+  ) {
     // add movement
     currentAccount.movements.push(amount);
-    
+
     updateUI(currentAccount);
 
     inputLoanAmount.value = '';
   }
-})
+});
 
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
-  
+
   if (
     inputCloseUsername.value === currentAccount.username &&
     Number(inputClosePin.value) === currentAccount.pin
@@ -221,13 +228,11 @@ btnClose.addEventListener('click', function (e) {
 });
 
 let sorted = false;
-btnSort.addEventListener('click', function(e) {
+btnSort.addEventListener('click', function (e) {
   e.preventDefault();
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
-})
-
-
+});
 
 //displayMovements(currentAccount);
 
@@ -528,38 +533,39 @@ console.log(movements)
 
 movements.sort((a,b) => b -a)
 console.log(movements)
-console.log(movements)*/
+console.log(movements)
 
-const arr = ([1,2,3,4,5,6,7])
-console.log(new Array(1,2,3,4,5,6,7))
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
 
-const x = new Array(5)
-console.log(x)
+const x = new Array(5);
+console.log(x);
 
-console.log(x.map(() => 5))
+console.log(x.map(() => 5));
 
-x.fill(1,3,5)
-x.fill(1)
-console.log(x)
+x.fill(1, 3, 5);
+x.fill(1);
+console.log(x);
 
-arr.fill(23,2,6)
+arr.fill(23, 2, 6);
 
-console.log(arr)
-
+console.log(arr);
 
 //Array.from
 
-const y = Array.from({length: 7}, () =>1);
-console.log(y)
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
 
-const z = Array.from({length: 7}, (_, i) => i+ 1);
-console.log(z)
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
 
-labelBalance.addEventListener('click', function() {
+labelBalance.addEventListener('click', function () {
   const movementUI = Array.from(
-    document.querySelectorAll('.movements__value'), el => Number(el.textContent.replace('€', ''))
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
   );
-console.log(movementUI);
-const movementUI2 =[...document.querySelectorAll('.movements__value')];
-console.log(movementUI2);
+  console.log(movementUI);
+  const movementUI2 = [...document.querySelectorAll('.movements__value')];
+  console.log(movementUI2);
 });
+*/
