@@ -381,7 +381,7 @@ const carlosAlmeida = new StudentCl('Carlos Almeida', 1989, 'Computer Science');
 
 carlosAlmeida.introduce();
 carlosAlmeida.calcAge();
-*/
+
 
 const PersonProto = {
   calcAge() {
@@ -411,3 +411,175 @@ const jay = Object.create(StudentProto);
 jay.init('Jay', 1989, 'Computer Science');
 jay.introduce();
 jay.calcAge();
+
+const carlos = new StudentProto()
+
+//Public Field
+//Private Fields
+//Private Methods
+//(there is also the static version)
+
+class Account {
+    // 1)public Fields (instances)
+    locale = navigator.language;
+   // _movements = [];
+
+    //2) Private Fields
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    
+    //Protected property
+    this.#pin = pin;
+    //this._movements = [];
+    //this.locale = navigator.language;
+    console.log(`Thanks for opening an account, ${owner}`)
+  }
+  
+  //Public interface
+  //Public Methods
+  getMovements(){
+    return this.#movements;
+  }
+  deposit(val) {
+    this.#movements.push(val);
+    return this;
+  }
+
+  withdraw(val){
+    this.deposit(-val);
+    return this;
+  }
+ 
+
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan Approved`);
+      return this;
+    }
+  }
+
+  //Private Methods
+  _approveLoan(val){
+    return true;
+  }
+
+}
+
+const acc1 = new Account('Carlos G T Almeida', 'EUR', 1128);
+
+//acc1.#movements.push(230);
+
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+acc1._approveLoan(1000);
+
+
+console.log(acc1)
+console.log(acc1.pin)
+//console.log(acc1._approvaLoan());
+
+console.log(acc1.getMovements())
+
+acc1.deposit(434).deposit(900).withdraw(349).requestLoan(1090);
+console.log(acc1)*/
+
+class CarCl {
+  constructor(make, speed){
+  this.make = make;
+  this.speed = speed;
+  }
+  accelerate () {
+    this.speed += 10;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h}`);
+
+    return this;
+  };
+
+  brake() {
+    this._speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  };
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed){
+    this.speed = speed * 1.6;
+  }
+
+};
+
+
+class EVCL extends CarCl {
+  #charge;
+  constructor(make, speed, charge){
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  get chargeBattery() {
+    this.#charge = chargeTo;
+    return this;
+  };
+
+  set chargeBattery(chargeTo) {
+    this.#charge += chargeTo;
+    return this;
+  };
+
+  accelerate(){
+    this.speed = +20;
+    this.#charge--;
+    console.log(`${this.make} is going at ${this.speed} km/h, with a charge of ${this.#charge}`)
+    return this;
+  }
+  
+
+}
+
+
+const rivian = new EVCL('Rivian', 120,23 );
+
+console.log(rivian);
+console.log(rivian.accelerate(39));
+
+rivian.accelerate()
+      .accelerate()
+      .brake()
+      .chargeBattery(40)
+      .accelerate();
+
+/*
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+//Link the prototypes
+EV.prototype = Object.create(Car.prototype);
+
+chargeBattery(chargeTo) {
+  this.charge = chargeTo;
+  return charge;
+};
+
+EV.prototype.accelerate = function() {
+  this.speed += chargeTO;
+};
+
+EV.prototype.accelerate = function (){
+  this.speed = +20;
+  this.charge = chargeTO;
+  console.log(`${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}`)
+};
+
+
+*/
