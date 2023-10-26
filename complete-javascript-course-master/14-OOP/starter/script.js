@@ -413,10 +413,13 @@ jay.introduce();
 jay.calcAge();
 
 const carlos = new StudentProto()
-
+Inheritance Between "Classes": ES6 CLasses
 //Public Field
 //Private Fields
 //Private Methods
+Chainging methods
+parent class
+Child class
 //(there is also the static version)
 
 class Account {
